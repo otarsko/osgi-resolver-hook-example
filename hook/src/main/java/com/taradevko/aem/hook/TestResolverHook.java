@@ -11,7 +11,7 @@ public class TestResolverHook implements ResolverHook {
 
     private static final Map<String, List<String>> restictions = new HashMap<>();
 
-    {
+    static {
         restictions.put("org.apache.abdera.parser", Arrays.asList("org.apache.abdera.server", "org.apache.abdera.client"));
     }
 
