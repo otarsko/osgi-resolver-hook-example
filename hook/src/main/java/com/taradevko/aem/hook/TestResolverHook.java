@@ -27,10 +27,11 @@ public class TestResolverHook implements ResolverHook {
 
     public void filterMatches(BundleRequirement requirement, Collection<BundleCapability> candidates) {
         candidates.removeIf(candidate -> {
-            BundleRevision rev = candidate.getRevision();
-            String key = rev.getSymbolicName();
-            String requirementName = requirement.getRevision().getSymbolicName();
-            final List<String> allowedList = restictions.get(key);
+
+            final String candidateName = candidate.getRevision().getSymbolicName();
+            final String requirementName = requirement.getRevision().getSymbolicName();
+
+            final List<String> allowedList = restictions.get(candidateName);
             return allowedList != null && !allowedList.contains(requirementName);
         });
     }
